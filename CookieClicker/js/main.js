@@ -9,7 +9,7 @@ var totalSpeed = 0;
 var oldClick = false;
 var fastestCLick = false; 
 var timer;
-
+var goldenClicked = false;
 /*
 setTimeout(function () {
 			alert("hacked");
@@ -19,6 +19,11 @@ var goldenCookie = document.getElementById("golden-cookie");
 
 function goldenClicker() {
 	goldenCookie.style.display = "none";
+	/*if (goldenClicked)
+		document.getElementById("body").style.backgroundColor = "#DAA520";
+	else 
+		goldenClicked = true;
+*/
 	setTimeout(function () {
 		goldenCookie.style.display = "block";
 		goldenCookieRandPos();
@@ -39,25 +44,9 @@ function goldenCookieRandPos() {
 
 
 function getFastestCLick() {
-
 	var d = new Date();
     var n = d.getTime();
-
-
     console.log(n);
-
-
-    var r = Math.floor(Math.random()*255); 
-    var g = Math.floor(Math.random()*255);
-    var b = Math.floor(Math.random()*255);
-
-    document.getElementById("body").style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-	
-
-
-
-
-
 	if (!oldClick) {
 		oldClick = n; 
 	} else {
@@ -67,7 +56,6 @@ function getFastestCLick() {
 			document.getElementById("fastest-click").innerHTML = fastestCLick;
 		} else if (newClick < fastestCLick) {
 			fastestCLick = newClick
-
 			document.getElementById("fastest-click").innerHTML = fastestCLick;
 			document.getElementById("recordType").innerHTML = "Fastest: ";
 			document.getElementById("recordValue").innerHTML = fastestCLick;
@@ -98,6 +86,7 @@ function getFastestCLick() {
 			}, 500);
 	}
 }
+
 
 function fade(element) {
     var op = 1;  // initial opacity
